@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khata — Digital Udhaar Ledger for Small Shops (UX Concept)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">K</span> Khata</div>
+  <p class="tagline">Digital Udhaar Ledger for Small Shops · UX Concept</p>
+</header>
+
+<div class="notice" role="note">
+  <strong>Unofficial UX concept — sample data only.</strong>
+  Every shop, customer, amount, transaction and receipt shown here is invented
+  sample data for demonstrating the design. Khata is not a real accounting app
+  and is not connected to any shop. Never enter real customer data here.
+</div>
+
+<main>
+  <section class="summary" aria-label="Shop summary">
+    <p class="label">TOTAL UDHAAR OUTSTANDING</p>
+    <p class="big" id="summary-total"></p>
+    <p id="summary-count"></p>
+    <p id="summary-overdue"></p>
+  </section>
+
+  <div class="strip">
+    <div class="card">
+      <p class="label">Collected this month</p>
+      <p><strong id="summary-collected"></strong></p>
+    </div>
+    <div class="card">
+      <p class="label">Daily collection</p>
+      <p id="summary-daily"></p>
+    </div>
+  </div>
+
+  <section aria-label="Customer ledger">
+    <h2>Customers</h2>
+    <p class="muted">Search by name, city or sample ID. Filter by overdue risk band.</p>
+    <label for="customer-search">Search customers</label>
+    <input id="customer-search" type="text" placeholder="e.g. Ahmed, Lahore, KH-C01…" autocomplete="off">
+    <label for="band-filter">Overdue risk band</label>
+    <select id="band-filter">
+      <option value="All">All bands</option>
+      <option value="current">Current (&lt; 30 days)</option>
+      <option value="30+ days">30+ days</option>
+      <option value="60+ days">60+ days</option>
+    </select>
+    <p id="customer-count" class="muted"></p>
+    <div id="customer-list"></div>
+  </section>
+
+  <section aria-label="Customer detail">
+    <h2 id="detail-name"></h2>
+    <p id="detail-meta" class="muted"></p>
+    <div class="card">
+      <p class="label">BALANCE OWED</p>
+      <p class="big" id="detail-balance" style="font-size:32px;font-weight:800;margin:8px 0;"></p>
+      <p id="detail-risk"></p>
+    </div>
+    <h3>Transaction history</h3>
+    <ul id="txn-list" class="txn"></ul>
+
+    <h3>Record a payment</h3>
+    <label for="payment-amount">Payment amount (Rs)</label>
+    <div class="row">
+      <input id="payment-amount" type="number" min="1" placeholder="e.g. 2000">
+      <button id="payment-btn" class="btn">Record payment</button>
+    </div>
+    <p id="payment-result" hidden></p>
+    <p id="receipt-line" class="receipt" hidden></p>
+
+    <h3>Reminder</h3>
+    <div class="reminder-box">
+      <p id="reminder-text"></p>
+      <button id="reminder-btn" class="btn">Generate reminder text</button>
+      <p id="reminder-note" class="muted"></p>
+    </div>
+  </section>
+
+  <button id="reset-btn" class="btn secondary">Reset demo data (clears saved payments)</button>
+</main>
+
+<footer>
+  <p>Khata is an unofficial UX concept built for learning. All data is sample data.</p>
+  <p>Designed and built by Abbas Momand · <a href="mailto:abbasmomand98@gmail.com">abbasmomand98@gmail.com</a></p>
+</footer>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
